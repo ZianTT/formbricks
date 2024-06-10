@@ -45,6 +45,7 @@ const setPreviousResult = async (previousResult: { active: boolean | null; lastC
 };
 
 export const getIsEnterpriseEdition = async (): Promise<boolean> => {
+  return true;
   if (!ENTERPRISE_LICENSE_KEY || ENTERPRISE_LICENSE_KEY.length === 0) {
     return false;
   }
@@ -69,6 +70,7 @@ export const getIsEnterpriseEdition = async (): Promise<boolean> => {
   // null signifies an error
   const isValid: boolean | null = await cache(
     async () => {
+      return true;
       try {
         const now = new Date();
         const startOfYear = new Date(now.getFullYear(), 0, 1); // January 1st of the current year
@@ -128,12 +130,14 @@ export const getIsEnterpriseEdition = async (): Promise<boolean> => {
 };
 
 export const getRemoveInAppBrandingPermission = (organization: TOrganization): boolean => {
+  return true;
   if (IS_FORMBRICKS_CLOUD) return organization.billing.features.inAppSurvey.status !== "inactive";
   else if (!IS_FORMBRICKS_CLOUD) return true;
   return false;
 };
 
 export const getRemoveLinkBrandingPermission = (organization: TOrganization): boolean => {
+  return true;
   if (IS_FORMBRICKS_CLOUD) return organization.billing.features.linkSurvey.status !== "inactive";
   else if (!IS_FORMBRICKS_CLOUD) return true;
   return false;
